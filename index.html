@@ -3,80 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agroforte - Inovação e Sustentabilidade | Agrinho 2026</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Projeto Agrinho 2026 - Perspectiva RL</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header class="header-container">
-        <div class="logo">
-            <h1>Agro<span>Forte</span></h1>
+    <header>
+        <div class="acessibilidade-conteiner">
+            <button id="btn-contraste" class="btn-util">tema escuro</button>
         </div>
-        <nav class="nav-menu">
-            <a href="#sobre">Sobre</a>
-            <a href="#pilares">Pilares</a>
-            <a href="#calculadora">Simulador</a>
-            <a href="#contato">Contato</a>
-        </nav>
-        <div class="accessibility-controls">
-            <button id="btn-theme" aria-label="Alternar modo escuro">🌓 Modo Escuro</button>
-            <button id="btn-font-up" aria-label="Aumentar fonte">A+</button>
-            <button id="btn-font-down" aria-label="Diminuir fonte">A-</button>
-        </div>
+        <h1>Agrinho 2026</h1>
+        <h2>agrinho 2026</h2>
+        <p class="autores">
+            <strong> Juliana de Carvalho Araujo Silva N°18</strong>
+        </p>
     </header>
 
     <main>
-        <section class="hero-section">
-            <div class="hero-content">
-                <h2 id="welcome-title">Bem-vindo ao Futuro do Campo</h2>
-                <p>Descubra como o Agroforte une tecnologia, preservação ambiental e a força do produtor rural.</p>
-                
-                <div class="user-interaction-box">
-                    <label for="user-name">Como podemos te chamar?</label>
-                    <input type="text" id="user-name" placeholder="Digite seu nome...">
-                    <button id="btn-welcome">Entrar</button>
-                </div>
-            </div>
+        <section class="post">
+            <h2>MIP- Manejo Integrado de Pragas</h2>
+            <p>A MIP é uma ferramenta econômica que mostra como os setores de uma economia compram e vendem bens e serviços entre si.</p>
+            <p>Ela permite analisar impactos de mudanças na produção, no emprego e na renda em toda a economia.</p>
+            <button id="btnAprender">Ver Mais</button>
         </section>
 
-        <section id="sobre" class="section-padding">
-            <h2>O que é o Agroforte?</h2>
-            <p>O Agroforte representa a união da resiliência do trabalhador do campo com as tecnologias mais avançadas de cultivo sustentável, garantindo a segurança alimentar e a proteção dos nossos ecossistemas.</p>
-        </section>
-
-        <section id="pilares" class="section-padding grid-pilares">
-            <div class="card-pilar">
-                <h3>Tecnologia</h3>
-                <p>Uso de drones, sensores IoT e análise de dados para otimizar a produção.</p>
-            </div>
-            <div class="card-pilar">
-                <h3>Sustentabilidade</h3>
-                <p>Práticas que preservam o solo, economizam água e reduzem as emissões de carbono.</p>
-            </div>
-            <div class="card-pilar">
-                <h3>Comunidade</h3>
-                <p>Valorização do produtor rural e fortalecimento da agricultura familiar.</p>
-            </div>
-        </section>
-
-        <section id="calculadora" class="section-padding input-section">
-            <h2>Simulador Agroforte</h2>
-            <p>Insira a área da sua propriedade (em hectares) para estimar a economia de água potencial usando manejo inteligente.</p>
-            
-            <div class="form-group">
-                <label for="input-hectares">Área da Propriedade (Hectares):</label>
-                <input type="number" id="input-hectares" min="1" placeholder="Ex: 50">
-                <button id="btn-calcular">Calcular Economia</button>
-            </div>
-            
-            <div id="resultado-calculo" class="result-box hidden">
-                </div>
+        <section id="tecnologia">
+            <h2>Tecnologia no Campo</h2>
+            <p>O uso de inteligência artificial, drones e dados para transformar o agronegócio.</p>
         </section>
     </main>
 
-    <footer class="footer-container">
-        <p>&copy; 2026 Projeto Agroforte. Desenvolvido para o Concurso Agrinho 2026.</p>
-        <p>#agrinho2026</p>
+    <footer>
+        <p>Agrinho - 2026</p>
     </footer>
 
     <script src="script.js"></script>
