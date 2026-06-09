@@ -2,7 +2,7 @@
    1. VARIÁVEIS DE AMBIENTE E TEMA
    ========================================== */
 :root {
-    --bg-primary: #f4f7f5;
+    --bg-primary: ;
     --bg-card: #ffffff;
     --text-color: #2c3e50;
     --accent-color: #27ae60;
@@ -23,9 +23,7 @@ body.dark-mode {
     --header-text: #e0e0e0;
 }
 
-/* ==========================================
-   2. ESTILOS GERAIS E ACESSIBILIDADE
-   ========================================== */
+/* 2. ESTILOS GERAIS E ACESSIBILIDADE */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--bg-primary);
