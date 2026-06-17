@@ -1,160 +1,244 @@
-/* ==========================================
-   1. VARIÁVEIS DE AMBIENTE E TEMA
-   ========================================== */
+/* --- Cores Base (Tema VS Code Light) --- */
 :root {
-    --bg-primary: white;
-    --bg-card: #ffffff;
-    --text-color: #2c3e50;
-    --accent-color: #27ae60;
-    --accent-hover: #219653;
-    --header-bg: #1e4620;
-    --header-text: #ffffff;
-    --transition-speed: 0.3s;
+    --cor-fundo: #f3f3f3;
+    --cor-card: #ffffff;
+    --cor-texto: #333333;
+    --cor-borda: #ececec;
+    --cor-sintaxe-keyword: #0000ff; /* Azul clássico de código */
+    --cor-sintaxe-string: #a31515;  /* Vermelho de string */
+    --cor-sintaxe-comentario: #008000; /* Verde de comentário */
+    --transicao: all 0.2s ease;
+    
+    /* A Fonte Tradicional do VS Code */
+    --fonte-vscode: Consolas, Monaco, 'Courier New', Courier, monospace;
 }
 
-/* Classes para o Modo Escuro (ativadas via JS) */
-body.dark-mode {
-    --bg-primary: #121212;
-    --bg-card: #1e1e1e;
-    --text-color: #e0e0e0;
-    --accent-color: #2ecc71;
-    --accent-hover: #27ae60;
-    --header-bg: #0d2610;
-    --header-text: #e0e0e0;
+/* --- Cores Alternativas (Tema VS Code Dark / Default Dark+) --- */
+.modo-escuro {
+    --cor-fundo: #1e1e1e;
+    --cor-card: #252526;
+    --cor-texto: #d4d4d4;
+    --cor-borda: #3c3c3c;
+    --cor-sintaxe-keyword: #569cd6; /* Azul claro do VS Code Dark */
+    --cor-sintaxe-string: #ce9178;  /* Laranja/Marrom de string */
+    --cor-sintaxe-comentario: #6a9955; /* Verde oliva de comentário */
 }
 
-/* 2. ESTILOS GERAIS E ACESSIBILIDADE */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-primary);
-    color: var(--text-color);
+/* --- Reset e Configuração da Fonte --- */
+* {
     margin: 0;
     padding: 0;
-    transition: background-color var(--transition-speed), color var(--transition-speed);
-    line-height: 1.6;
+    box-sizing: border-box;
+    font-family: var(--fonte-vscode); /* Aplica a fonte em absolutamente tudo */
 }
 
-/* ==========================================
-   3. LAYOUT (FLEXBOX & GRID)
-   ========================================== */
-.header-container {
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    transition: var(--transicao);
+    line-height: 1.6;
+    padding: 0;
+}
+
+.container {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* --- Cabeçalho (Estilo Abas do VS Code) --- */
+header {
+    background-color: var(--cor-card);
+    border-bottom: 2px solid var(--cor-borda);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--header-bg);
-    color: var(--header-text);
-    padding: 1rem 5%;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    padding: 15px 5%;
 }
 
-.nav-menu a {
-    color: var(--header-text);
-    text-decoration: none;
-    margin: 0 15px;
-    font-weight: 600;
-    transition: color var(--transition-speed);
+header .logo h1 {
+    font-size: 1.3rem;
+    font-weight: normal;
 }
 
-/* Efeito Hover que guia a atenção */
-.nav-menu a:hover {
-    color: var(--accent-color);
+header .logo h1 span {
+    color: var(--cor-sintaxe-keyword);
 }
 
-.grid-pilares {
+nav {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    padding: 40px 5%;
+    align-items: center;
+    gap: 25px;
 }
 
-.card-pilar {
-    background-color: var(--bg-card);
-    border-left: 5px solid var(--accent-color);
-    padding: 20px;
-    border-radius: 8px;
-    flex: 1 1 300px; /* Responsivo por natureza */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform var(--transition-speed);
+nav a {
+    color: var(--cor-sintaxe-comentario);
+    text-decoration: none;
+    font-size: 1rem;
 }
 
-.card-pilar:hover {
-    transform: translateY(-5px);
+nav a:hover {
+    text-decoration: underline;
 }
 
-/* Elementos de Formulário e Botões */
-button {
-    background-color: var(--accent-color);
+/* --- Botão Estilo Comando do Editor --- */
+#btn-tema {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    border: 1px solid var(--cor-borda);
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+#btn-tema:hover {
+    background-color: var(--cor-sintaxe-keyword);
+    color: white;
+}
+
+/* --- Hero Banner (Terminal View) --- */
+.hero {
+    background-color: var(--cor-card);
+    border-bottom: 1px solid var(--cor-borda);
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.hero h2 {
+    color: var(--cor-sintaxe-keyword);
+    font-size: 1.8rem;
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: 0 auto 25px auto;
+    opacity: 0.9;
+}
+
+.btn-principal {
+    display: inline-block;
+    border: 1px solid var(--cor-sintaxe-keyword);
+    color: var(--cor-sintaxe-keyword);
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: var(--transicao);
+}
+
+.btn-principal:hover {
+    background-color: var(--cor-sintaxe-keyword);
+    color: #fff;
+}
+
+/* --- Conteúdo e Seções --- */
+.conteudo-principal h2 {
+    font-size: 1.4rem;
+    color: var(--cor-sintaxe-keyword);
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+
+.conteudo-principal p {
+    margin-bottom: 30px;
+}
+
+/* Painel do Formulário */
+.card {
+    background-color: var(--cor-card);
+    border: 1px solid var(--cor-borda);
+    padding: 25px;
+}
+
+.card h3 {
+    font-size: 1.3rem;
+    font-weight: normal;
+    color: var(--cor-sintaxe-keyword);
+    margin-bottom: 20px;
+}
+
+.campo-formulario {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.campo-formulario label {
+    font-size: 1rem;
+    color: var(--cor-texto);
+}
+
+.campo-formulario input {
+    flex: 1;
+    background-color: var(--cor-fundo);
+    color: var(--cor-sintaxe-string);
+    border: 1px solid var(--cor-borda);
+    padding: 8px;
+    font-size: 1rem;
+}
+
+.campo-formulario input:focus {
+    outline: 1px solid var(--cor-sintaxe-keyword);
+}
+
+#btn-calcular {
+    background-color: var(--cor-sintaxe-keyword);
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 12px;
+    width: 100%;
     cursor: pointer;
-    font-weight: bold;
-    transition: background-color var(--transition-speed), transform 0.1s;
+    font-size: 1rem;
 }
 
-button:hover {
-    background-color: var(--accent-hover);
+#btn-calcular:hover {
+    opacity: 0.9;
 }
 
-button:active {
-    transform: scale(0.98);
+/* --- Saída de Dados no Terminal (Resultado) --- */
+.escondido {
+    display: none;
 }
 
-input[type="text"], input[type="number"] {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-right: 10px;
-}
-
-/* Classes Auxiliares */
-.section-padding {
-    padding: 60px 10%;
-    text-align: center;
-}
-
-.hidden {
-    display: none !important;
-}
-
-.result-box {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: var(--bg-card);
-    border: 2px dashed var(--accent-color);
-    border-radius: 8px;
-    display: inline-block;
-}
-
-.footer-container {
-    text-align: center;
-    background-color: var(--header-bg);
-    color: var(--header-text);
+.resultado-sucesso {
+    margin-top: 25px;
     padding: 20px;
-    margin-top: 40px;
+    border-left: 4px solid var(--cor-sintaxe-comentario);
+    background-color: var(--cor-fundo);
 }
 
-/* ==========================================
-   4. RESPONSIVIDADE (MEDIA QUERIES)
-   ========================================== */
-@media (max-width: 768px) {
-    .header-container {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-    }
+.resultado-sucesso h4 {
+    color: var(--cor-sintaxe-comentario);
+    margin-bottom: 8px;
+    font-weight: normal;
+}
 
-    .nav-menu {
-        display: flex;
+/* --- Rodapé --- */
+footer {
+    text-align: center;
+    padding: 40px;
+    margin-top: 60px;
+    border-top: 1px solid var(--cor-borda);
+    color: var(--cor-sintaxe-comentario);
+    font-size: 0.9rem;
+}
+
+.hashtag {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--cor-sintaxe-keyword);
+    margin-top: 15px;
+}
+
+/* --- Responsividade Básica --- */
+@media (max-width: 600px) {
+    header, .campo-formulario {
         flex-direction: column;
+        align-items: flex-start;
         gap: 10px;
     }
-
-    .section-padding {
-        padding: 40px 5%;
+    .campo-formulario input {
+        width: 100%;
     }
 }

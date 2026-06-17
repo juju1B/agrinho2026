@@ -1,77 +1,244 @@
-// ==========================================
-// CONTROLE DE INTERAÇÃO DO USUÁRIO E SAUDAÇÃO
-// ==========================================
-
-const btnWelcome = document.getElementById('btn-welcome');
-const inputName = document.getElementById('user-name');
-const welcomeTitle = document.getElementById('welcome-title');
-
-// Função para saudar o usuário utilizando variável para armazenar o valor
-btnWelcome.addEventListener('click', function() {
-    const userName = inputName.value.trim();
+/* --- Cores Base (Tema VS Code Light) --- */
+:root {
+    --cor-fundo: #f3f3f3;
+    --cor-card: #ffffff;
+    --cor-texto: #333333;
+    --cor-borda: #ececec;
+    --cor-sintaxe-keyword: #0000ff; /* Azul clássico de código */
+    --cor-sintaxe-string: #a31515;  /* Vermelho de string */
+    --cor-sintaxe-comentario: #008000; /* Verde de comentário */
+    --transicao: all 0.2s ease;
     
-    if (userName !== "") {
-        // Altera o texto do elemento DOM de forma dinâmica
-        welcomeTitle.textContent = `Olá, ${userName}! Bem-vindo ao Agroforte`;
-        inputName.parentElement.innerHTML = `<p>Obrigado por se conectar com a sustentabilidade do campo!</p>`;
-    } else {
-        alert("Por favor, digite seu nome para receber as boas-vindas.");
+    /* A Fonte Tradicional do VS Code */
+    --fonte-vscode: Consolas, Monaco, 'Courier New', Courier, monospace;
+}
+
+/* --- Cores Alternativas (Tema VS Code Dark / Default Dark+) --- */
+.modo-escuro {
+    --cor-fundo: #1e1e1e;
+    --cor-card: #252526;
+    --cor-texto: #d4d4d4;
+    --cor-borda: #3c3c3c;
+    --cor-sintaxe-keyword: #569cd6; /* Azul claro do VS Code Dark */
+    --cor-sintaxe-string: #ce9178;  /* Laranja/Marrom de string */
+    --cor-sintaxe-comentario: #6a9955; /* Verde oliva de comentário */
+}
+
+/* --- Reset e Configuração da Fonte --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--fonte-vscode); /* Aplica a fonte em absolutamente tudo */
+}
+
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    transition: var(--transicao);
+    line-height: 1.6;
+    padding: 0;
+}
+
+.container {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* --- Cabeçalho (Estilo Abas do VS Code) --- */
+header {
+    background-color: var(--cor-card);
+    border-bottom: 2px solid var(--cor-borda);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+}
+
+header .logo h1 {
+    font-size: 1.3rem;
+    font-weight: normal;
+}
+
+header .logo h1 span {
+    color: var(--cor-sintaxe-keyword);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+nav a {
+    color: var(--cor-sintaxe-comentario);
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* --- Botão Estilo Comando do Editor --- */
+#btn-tema {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    border: 1px solid var(--cor-borda);
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+#btn-tema:hover {
+    background-color: var(--cor-sintaxe-keyword);
+    color: white;
+}
+
+/* --- Hero Banner (Terminal View) --- */
+.hero {
+    background-color: var(--cor-card);
+    border-bottom: 1px solid var(--cor-borda);
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.hero h2 {
+    color: var(--cor-sintaxe-keyword);
+    font-size: 1.8rem;
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: 0 auto 25px auto;
+    opacity: 0.9;
+}
+
+.btn-principal {
+    display: inline-block;
+    border: 1px solid var(--cor-sintaxe-keyword);
+    color: var(--cor-sintaxe-keyword);
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: var(--transicao);
+}
+
+.btn-principal:hover {
+    background-color: var(--cor-sintaxe-keyword);
+    color: #fff;
+}
+
+/* --- Conteúdo e Seções --- */
+.conteudo-principal h2 {
+    font-size: 1.4rem;
+    color: var(--cor-sintaxe-keyword);
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+
+.conteudo-principal p {
+    margin-bottom: 30px;
+}
+
+/* Painel do Formulário */
+.card {
+    background-color: var(--cor-card);
+    border: 1px solid var(--cor-borda);
+    padding: 25px;
+}
+
+.card h3 {
+    font-size: 1.3rem;
+    font-weight: normal;
+    color: var(--cor-sintaxe-keyword);
+    margin-bottom: 20px;
+}
+
+.campo-formulario {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.campo-formulario label {
+    font-size: 1rem;
+    color: var(--cor-texto);
+}
+
+.campo-formulario input {
+    flex: 1;
+    background-color: var(--cor-fundo);
+    color: var(--cor-sintaxe-string);
+    border: 1px solid var(--cor-borda);
+    padding: 8px;
+    font-size: 1rem;
+}
+
+.campo-formulario input:focus {
+    outline: 1px solid var(--cor-sintaxe-keyword);
+}
+
+#btn-calcular {
+    background-color: var(--cor-sintaxe-keyword);
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+#btn-calcular:hover {
+    opacity: 0.9;
+}
+
+/* --- Saída de Dados no Terminal (Resultado) --- */
+.escondido {
+    display: none;
+}
+
+.resultado-sucesso {
+    margin-top: 25px;
+    padding: 20px;
+    border-left: 4px solid var(--cor-sintaxe-comentario);
+    background-color: var(--cor-fundo);
+}
+
+.resultado-sucesso h4 {
+    color: var(--cor-sintaxe-comentario);
+    margin-bottom: 8px;
+    font-weight: normal;
+}
+
+/* --- Rodapé --- */
+footer {
+    text-align: center;
+    padding: 40px;
+    margin-top: 60px;
+    border-top: 1px solid var(--cor-borda);
+    color: var(--cor-sintaxe-comentario);
+    font-size: 0.9rem;
+}
+
+.hashtag {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--cor-sintaxe-keyword);
+    margin-top: 15px;
+}
+
+/* --- Responsividade Básica --- */
+@media (max-width: 600px) {
+    header, .campo-formulario {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
     }
-});
-
-// ==========================================
-// SIMULADOR AGROFORTE (LÓGICA MATEMÁTICA E DOM)
-// ==========================================
-
-const btnCalcular = document.getElementById('btn-calcular');
-const inputHectares = document.getElementById('input-hectares');
-const divResultado = document.getElementById('resultado-calculo');
-
-// Função para calcular a estimativa de economia de água
-btnCalcular.addEventListener('click', function() {
-    const hectares = parseFloat(inputHectares.value);
-    
-    if (isNaN(hectares) || hectares <= 0) {
-        alert("Por favor, insira um valor válido de hectares maior que zero.");
-        return;
+    .campo-formulario input {
+        width: 100%;
     }
-    
-    // Regra de negócio fictícia: Cada hectare economiza cerca de 1500 litros de água por mês com IoT
-    const economiaLitros = hectares * 1500;
-    
-    // Remove a classe 'hidden' para mostrar a div e atualiza seu conteúdo HTML interno
-    divResultado.classList.remove('hidden');
-    divResultado.innerHTML = `
-        <h3>Resultado da sua Simulação:</h3>
-        <p>Em uma propriedade de <strong>${hectares} hectares</strong>, a implementação do sistema <strong>Agroforte</strong> pode gerar uma economia estimada de até <strong>${economiaLitros.toLocaleString('pt-BR')} litros</strong> de água por mês!</p>
-    `;
-});
-
-// ==========================================
-// CONTROLES DE USABILIDADE E ACESSIBILIDADE
-// ==========================================
-
-// 1. Modo Escuro
-const btnTheme = document.getElementById('btn-theme');
-btnTheme.addEventListener('click', function() {
-    document.body.classList.toggle('dark-mode');
-});
-
-// 2. Alteração do Tamanho da Fonte
-const btnFontUp = document.getElementById('btn-font-up');
-const btnFontDown = document.getElementById('btn-font-down');
-let currentFontSize = 100; // Porcentagem do tamanho original
-
-btnFontUp.addEventListener('click', function() {
-    if (currentFontSize < 130) { // Limite máximo para não quebrar o layout
-        currentFontSize += 10;
-        document.documentElement.style.fontSize = `${currentFontSize}%`;
-    }
-});
-
-btnFontDown.addEventListener('click', function() {
-    if (currentFontSize > 80) { // Limite mínimo de legibilidade
-        currentFontSize -= 10;
-        document.documentElement.style.fontSize = `${currentFontSize}%`;
-    }
-});
+}
