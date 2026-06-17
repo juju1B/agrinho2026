@@ -1,244 +1,47 @@
-/* --- Cores Base (Tema VS Code Light) --- */
-:root {
-    --cor-fundo: #f3f3f3;
-    --cor-card: #ffffff;
-    --cor-texto: #333333;
-    --cor-borda: #ececec;
-    --cor-sintaxe-keyword: #0000ff; /* Azul clássico de código */
-    --cor-sintaxe-string: #a31515;  /* Vermelho de string */
-    --cor-sintaxe-comentario: #008000; /* Verde de comentário */
-    --transicao: all 0.2s ease;
+// Aguarda o carregamento do documento
+document.addEventListener("DOMContentLoaded", () => {
     
-    /* A Fonte Tradicional do VS Code */
-    --fonte-vscode: Consolas, Monaco, 'Courier New', Courier, monospace;
-}
+    // --- FUNÇÃO 1: MUDANÇA DE TEMA (LIGHT / DARK VSCODE) ---
+    const btnTema = document.getElementById("btn-tema");
+    
+    btnTema.addEventListener("click", () => {
+        document.body.classList.toggle("modo-escuro");
+        
+        if (document.body.classList.contains("modo-escuro")) {
+            btnTema.textContent = "Ajustar_Tema(Tema_Claro)";
+        } else {
+            btnTema.textContent = "Ajustar_Tema(Tema_Escuro)";
+        }
+    });
 
-/* --- Cores Alternativas (Tema VS Code Dark / Default Dark+) --- */
-.modo-escuro {
-    --cor-fundo: #1e1e1e;
-    --cor-card: #252526;
-    --cor-texto: #d4d4d4;
-    --cor-borda: #3c3c3c;
-    --cor-sintaxe-keyword: #569cd6; /* Azul claro do VS Code Dark */
-    --cor-sintaxe-string: #ce9178;  /* Laranja/Marrom de string */
-    --cor-sintaxe-comentario: #6a9955; /* Verde oliva de comentário */
-}
+    // --- FUNÇÃO 2: SIMULADOR AGROFORTE ---
+    const btnCalcular = document.getElementById("btn-calcular");
+    const resultadoDiv = document.getElementById("resultado-simulacao");
 
-/* --- Reset e Configuração da Fonte --- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: var(--fonte-vscode); /* Aplica a fonte em absolutamente tudo */
-}
+    btnCalcular.addEventListener("click", () => {
+        // Captura e limpeza das variáveis informadas pelo usuário
+        const nomeInput = document.getElementById("nome-usuario").value.trim();
+        const areaInput = parseFloat(document.getElementById("area-hectares").value);
 
-body {
-    background-color: var(--cor-fundo);
-    color: var(--cor-texto);
-    transition: var(--transicao);
-    line-height: 1.6;
-    padding: 0;
-}
+        // Validação de segurança dos campos obrigatórios
+        if (nomeInput === "" || isNaN(areaInput) || areaInput <= 0) {
+            alert("Erro: Preencha os parâmetros corretamente.");
+            return;
+        }
 
-.container {
-    max-width: 850px;
-    margin: 0 auto;
-    padding: 40px 20px;
-}
+        // Regra de processamento de dados (Simulação Agroforte)
+        const litrosAguaEconomizados = areaInput * 1500;
 
-/* --- Cabeçalho (Estilo Abas do VS Code) --- */
-header {
-    background-color: var(--cor-card);
-    border-bottom: 2px solid var(--cor-borda);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 5%;
-}
+        // Alteração funcional do DOM (HTML) injetando o resultado na tela
+        resultadoDiv.innerHTML = `
+            <div class="resultado-sucesso">
+                <h4>// Retorno da simulação executado com sucesso:</h4>
+                <p>O usuário <strong>${nomeInput}</strong> calculou o impacto para uma área de <strong>${areaInput} hectares</strong>.</p>
+                <p>Resultado: Economia estimada de <strong>${litrosAguaEconomizados.toLocaleString('pt-BR')} litros</strong> de água/ano usando práticas Agroforte.</p>
+            </div>
+        `;
 
-header .logo h1 {
-    font-size: 1.3rem;
-    font-weight: normal;
-}
-
-header .logo h1 span {
-    color: var(--cor-sintaxe-keyword);
-}
-
-nav {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-}
-
-nav a {
-    color: var(--cor-sintaxe-comentario);
-    text-decoration: none;
-    font-size: 1rem;
-}
-
-nav a:hover {
-    text-decoration: underline;
-}
-
-/* --- Botão Estilo Comando do Editor --- */
-#btn-tema {
-    background-color: var(--cor-fundo);
-    color: var(--cor-texto);
-    border: 1px solid var(--cor-borda);
-    padding: 6px 12px;
-    cursor: pointer;
-    font-size: 0.9rem;
-}
-
-#btn-tema:hover {
-    background-color: var(--cor-sintaxe-keyword);
-    color: white;
-}
-
-/* --- Hero Banner (Terminal View) --- */
-.hero {
-    background-color: var(--cor-card);
-    border-bottom: 1px solid var(--cor-borda);
-    padding: 60px 20px;
-    text-align: center;
-}
-
-.hero h2 {
-    color: var(--cor-sintaxe-keyword);
-    font-size: 1.8rem;
-    font-weight: normal;
-    margin-bottom: 15px;
-}
-
-.hero p {
-    max-width: 650px;
-    margin: 0 auto 25px auto;
-    opacity: 0.9;
-}
-
-.btn-principal {
-    display: inline-block;
-    border: 1px solid var(--cor-sintaxe-keyword);
-    color: var(--cor-sintaxe-keyword);
-    padding: 10px 20px;
-    text-decoration: none;
-    transition: var(--transicao);
-}
-
-.btn-principal:hover {
-    background-color: var(--cor-sintaxe-keyword);
-    color: #fff;
-}
-
-/* --- Conteúdo e Seções --- */
-.conteudo-principal h2 {
-    font-size: 1.4rem;
-    color: var(--cor-sintaxe-keyword);
-    font-weight: normal;
-    margin-bottom: 15px;
-}
-
-.conteudo-principal p {
-    margin-bottom: 30px;
-}
-
-/* Painel do Formulário */
-.card {
-    background-color: var(--cor-card);
-    border: 1px solid var(--cor-borda);
-    padding: 25px;
-}
-
-.card h3 {
-    font-size: 1.3rem;
-    font-weight: normal;
-    color: var(--cor-sintaxe-keyword);
-    margin-bottom: 20px;
-}
-
-.campo-formulario {
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.campo-formulario label {
-    font-size: 1rem;
-    color: var(--cor-texto);
-}
-
-.campo-formulario input {
-    flex: 1;
-    background-color: var(--cor-fundo);
-    color: var(--cor-sintaxe-string);
-    border: 1px solid var(--cor-borda);
-    padding: 8px;
-    font-size: 1rem;
-}
-
-.campo-formulario input:focus {
-    outline: 1px solid var(--cor-sintaxe-keyword);
-}
-
-#btn-calcular {
-    background-color: var(--cor-sintaxe-keyword);
-    color: white;
-    border: none;
-    padding: 12px;
-    width: 100%;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-#btn-calcular:hover {
-    opacity: 0.9;
-}
-
-/* --- Saída de Dados no Terminal (Resultado) --- */
-.escondido {
-    display: none;
-}
-
-.resultado-sucesso {
-    margin-top: 25px;
-    padding: 20px;
-    border-left: 4px solid var(--cor-sintaxe-comentario);
-    background-color: var(--cor-fundo);
-}
-
-.resultado-sucesso h4 {
-    color: var(--cor-sintaxe-comentario);
-    margin-bottom: 8px;
-    font-weight: normal;
-}
-
-/* --- Rodapé --- */
-footer {
-    text-align: center;
-    padding: 40px;
-    margin-top: 60px;
-    border-top: 1px solid var(--cor-borda);
-    color: var(--cor-sintaxe-comentario);
-    font-size: 0.9rem;
-}
-
-.hashtag {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: var(--cor-sintaxe-keyword);
-    margin-top: 15px;
-}
-
-/* --- Responsividade Básica --- */
-@media (max-width: 600px) {
-    header, .campo-formulario {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
-    .campo-formulario input {
-        width: 100%;
-    }
-}
+        // Mostra a div de resposta tirando o estado escondido
+        resultadoDiv.classList.remove("escondido");
+    });
+});
