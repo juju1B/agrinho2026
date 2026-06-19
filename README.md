@@ -1,6 +1,3 @@
-Aqui está uma opção bem mais natural e direta, escrita como se você estivesse apenas explicando o projeto de um jeito simples:
-
-```markdown
 # Projeto Agrinho 2026
 
 Esse é o site que eu fiz para o projeto do Agrinho de 2026. A ideia dele é falar sobre o que a gente aprendeu, focando bastante na parte de sustentabilidade e em como as coisas no campo funcionam hoje em dia. 
