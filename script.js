@@ -1,7 +1,7 @@
 // Aguarda o carregamento do documento
 document.addEventListener("DOMContentLoaded", () => {
     
-    // --- FUNÇÃO 1: MUDANÇA DE TEMA (LIGHT / DARK VSCODE) ---
+    // modo escuro / alto contraste
     const btnTema = document.getElementById("btn-tema");
     
     btnTema.addEventListener("click", () => {
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // --- FUNÇÃO 2: SIMULADOR AGROFORTE ---
+    // SIMULADOR de cosumo de agua
     const btnCalcular = document.getElementById("btn-calcular");
     const resultadoDiv = document.getElementById("resultado-simulacao");
 
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 calculou o impacto para uma área de <strong>${areaInput} hectares</strong>.</p>
                 <p>Resultado: Economia estimada de <strong>
                 ${litrosAguaEconomizados.toLocaleString('pt-BR')} 
-                litros</strong> de água/ano usando práticas Agriculas.</p>
+                litros</strong> de água economizada por ano utilisando algumas práticas Agriculas.</p>
             </div>
         `;
 

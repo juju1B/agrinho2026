@@ -1,4 +1,4 @@
-/* --- Cores Base (Tema VS Code Light) --- */
+/* base de cores do modo claro */
 :root {
     --cor-fundo: #f3f3f3;
     --cor-card: #ffffff;
@@ -13,7 +13,7 @@
     --fonte-vscode: Consolas, Monaco, 'Courier New', Courier, monospace;
 }
 
-/* --- Cores Alternativas (Tema VS Code Dark / Default Dark+) --- */
+/* base de cores do modo escuro */
 .modo-escuro {
     --cor-fundo: #1e1e1e;
     --cor-card: #252526;
