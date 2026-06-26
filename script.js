@@ -35,9 +35,12 @@ document.addEventListener("DOMContentLoaded", () => {
         // Alteração funcional do DOM (HTML) injetando o resultado na tela
         resultadoDiv.innerHTML = `
             <div class="resultado-sucesso">
-                <h4> Retorno da simulação executado com sucesso:</h4>
-                <p>O usuário <strong>${nomeInput}</strong> calculou o impacto para uma área de <strong>${areaInput} hectares</strong>.</p>
-                <p>Resultado: Economia estimada de <strong>${litrosAguaEconomizados.toLocaleString('pt-BR')} litros</strong> de água/ano usando práticas Agriculas.</p>
+                <h4> simulação executado com sucesso:</h4>
+                <p>O usuário ${nomeInput} 
+                calculou o impacto para uma área de <strong>${areaInput} hectares</strong>.</p>
+                <p>Resultado: Economia estimada de <strong>
+                ${litrosAguaEconomizados.toLocaleString('pt-BR')} 
+                litros</strong> de água/ano usando práticas Agriculas.</p>
             </div>
         `;
 
