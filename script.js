@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const nomeInput = document.getElementById("nome-usuario").value.trim();
         const areaInput = parseFloat(document.getElementById("area-hectares").value);
 
-        // Validação de segurança dos campos obrigatórios
+        // mensagem de validação de nome e quantidade de hectares 
         if (nomeInput === "" || isNaN(areaInput) || areaInput <= 0) {
             alert("Erro: Preencha os parâmetros corretamente.");
             return;
@@ -32,11 +32,11 @@ document.addEventListener("DOMContentLoaded", () => {
         // Regra de processamento de dados (Simulação Agroforte)
         const litrosAguaEconomizados = areaInput * 1500;
 
-        // Alteração funcional do DOM (HTML) injetando o resultado na tela
+        // resultado das simulações
         resultadoDiv.innerHTML = `
             <div class="resultado-sucesso">
                 <h4> simulação executado com sucesso:</h4>
-                <p>O usuário ${nomeInput} 
+                <p>O usuário: ${nomeInput} 
                 calculou o impacto para uma área de <strong>${areaInput} hectares</strong>.</p>
                 <p>Resultado: Economia estimada de <strong>
                 ${litrosAguaEconomizados.toLocaleString('pt-BR')} 
